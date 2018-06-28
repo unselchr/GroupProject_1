@@ -99,3 +99,12 @@ if (user != null) {
 }
 $("#userID").text(email);
 })
+$("#signOut").on("click",function(){
+    firebase.auth().signOut().then(function() {
+        alert("signed out");
+        // Sign-out successful.
+    }).catch(function(error) {
+        // An error happened.
+        console.log(error);
+    });
+})

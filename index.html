@@ -11,9 +11,19 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
     
 </head>
+
 <body>
     <div id="loader">This should dissapear</div>
     <div id="firebaseui-auth-container">aye lmao</div>
+    <div class="searchResult"></div>
+    <div class="wrap">
+            <div class="search">
+               <input type="text" id="userInput" placeholder="What are you looking for?">
+               <button type="submit" class="searchButton">
+                 <i class="fa fa-search"></i>
+              </button>
+            </div>
+         </div>
 
     <form>
             <div class="form-group">
@@ -30,8 +40,10 @@
             </div>
             <button type="submit" id="submitAccount" class="btn btn-primary">Submit</button>
         </form>
-    <div>your id:<span id="userID"></span></div>
+    <div>your id:<span id="usSD"></span></div>
     <button id="TEST">TEST</button>
+    <button id="signOut">Sign out</button>
 </body>
 <script src="assets/accountSystem.js"></script>
+<script src="assets/default.js"></script>
 </html>
