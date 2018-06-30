@@ -1,0 +1,45 @@
+body{
+   
+
+    background-image: url(http://m.blog.hu/la/lauren/image/comics-1.jpg)
+    
+
+}
+
+.navbar-brand{
+    font-family: 'Faster One', cursive;
+    font-size: 40px; 
+
+}
+.navbar{
+    background-color: red !important;
+    font-family: 'Shojumaru', cursive;
+
+
+}
+.container-fluid{
+    
+
+}
+.jumbotron{
+    color: red !important;
+    font-weight: 100;
+    font-family: 'Bungee Inline', cursive;
+    margin-top: 20px;
+   
+}
+
+#userPanel{
+    margin-top: 22px;
+}
+.card-header{
+    background-color:  red !important;
+    color:white;
+    font-family: 'Shojumaru', cursive;
+
+}
+
+#myArticles{
+    font-family: 'Shojumaru', cursive;
+
+}
