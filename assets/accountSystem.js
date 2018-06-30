@@ -126,4 +126,4 @@ firebase.auth().onAuthStateChanged(function (user) {
     $(".visibleSignedIn").css("display", "none");
     $(".visibleSignedOut").css("display", "list-item");
   }
-});
+
