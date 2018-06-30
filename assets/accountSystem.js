@@ -143,15 +143,22 @@ $("#myArticles").on("click",function(event){
     var uid=user.uid;
     firebase.database().ref(uid).once("value").then(function(snapshot){
       //test code
-      console.log(snapshot.val());
-      console.log("====================");
+      var articleData=[];
+      //console.log(snapshot.val());
+      //console.log("====================");
       snapshot.forEach(function(childSnapshot){
-        console.log(childSnapshot.val().article);
+        //console.log(childSnapshot.val());//replace this with something that builds data for for card building function!
+        var singleArticle={title: childSnapshot.val().title,article: childSnapshot.val().description,link: childSnapshot.val().link};
+        //console.log(singleArticle);
+        articleData.push(singleArticle);
       })
+      //here call build deck!
+      //console.log(articleData);
+      $("#articleDisplay").append(buildDeck(articleData));
       //end test code
     })
   }
   else{
-    console.log("tried to read an article while not logged in. call an exterminator");
+    console.log("tried to read saved articles while not logged in. call an exterminator");
   }
 })
