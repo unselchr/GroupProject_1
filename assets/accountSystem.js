@@ -39,7 +39,7 @@ var uiConfig = {
       uiShown: function() {
         // The widget is rendered.
         // Hide the loader.
-        document.getElementById('loader').style.display = 'none';//!!!!!!!!!!!!!!!!!!!!!!!
+        // document.getElementById('loader').style.display = 'none';//!!!!!!!!!!!!!!!!!!!!!!!
       }
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -108,3 +108,22 @@ $("#signOut").on("click",function(){
         console.log(error);
     });
 })
+firebase.auth().onAuthStateChanged(function (user) {
+  var user = firebase.auth().currentUser;
+  if (user != null) {
+    // User is signed in.
+    console.log("user " + user.uid + " has logged in");
+    $(".visibleSignedIn").css("display", "list-item");
+    $(".visibleSignedOut").css("display", "none");
+    var userName
+    firebase.database().ref("/users/" + user.uid).once("value").then(function (snapshot) {
+      userName = snapshot.val().userName;
+      $(".userName").text(userName);
+    })
+  } else {
+    // No user is signed in.
+    console.log("no user logged in");
+    $(".visibleSignedIn").css("display", "none");
+    $(".visibleSignedOut").css("display", "list-item");
+  }
+});
