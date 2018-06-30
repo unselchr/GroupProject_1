@@ -115,11 +115,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     console.log("user " + user.uid + " has logged in");
     $(".visibleSignedIn").css("display", "list-item");
     $(".visibleSignedOut").css("display", "none");
-    var userName
-    firebase.database().ref("/users/" + user.uid).once("value").then(function (snapshot) {
-      userName = snapshot.val().userName;
-      $(".userName").text(userName);
-    })
   } else {
     // No user is signed in.
     console.log("no user logged in");
