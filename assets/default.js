@@ -38,6 +38,8 @@ function buildCard(data) {
 //In progress
 
 //Create variable for the user input 
+
+
 var userResults = "";
 
 function buildQueryURL() {
@@ -93,5 +95,3 @@ function getResultsFromNews(userResults) {
         $("#testNews").text(JSON.stringify(response));
     });
 };
-
-

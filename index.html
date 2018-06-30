@@ -9,44 +9,84 @@
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     
 </head>
 
 <body>
-    <div id="loader">This should dissapear</div>
-    <div id="firebaseui-auth-container">aye lmao</div>
-    <div class="searchResult"></div>
-    <div class="wrap">
-            <div class="search">
-               <input type="text" id="userInput" placeholder="What are you looking for?">
-               <button type="submit" class="searchButton">
-                 <i class="fa fa-search"></i>
-              </button>
-            </div>
-         </div>
 
-    <form>
-            <div class="form-group">
-                <label for="emailInput" >Email:</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+        <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+               
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                
+                          <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="userInfo.html">My Account</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                              </a>
+                              <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                <div id="firebaseui-auth-container"></div>>
+                              </div>
+                             
+                            </li>
+                            <button id="signOut" class="btn btn-primary visibleSignedIn nav-item">Sign Out</button>
+                          </ul>
+                         
+                        </div>
+                    </nav>
+                
+              </nav>
+              
+
+   
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8" >
+                    <div class="jumbotron">
+                            <h1 class="display-4">Featured Article</h1>
+                            <div id="featuredArticle">
+
+                            </div>
+                          </div>
             </div>
-            <div class="form-group">
-                <label for="passwordInput" >Password:</label>
-                <input type="password" class="form-control" id="passwordInput" placeholder="create a password">
+            <div class="col-lg-4" id="userPanel">
+                <div class="card visibleSignedIn" style="width: 18rem;">
+                    <div class="card-header">
+                      User Info
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item "><button id="myArticles" class="btn btn-primary">My Articles</button></li>
+                      <li class="list-group-item">Number Of Saved Articles: <span id="numberOfArticles">0</span></li>
+                      
+                    </ul>
+                  </div>
+
             </div>
-            <div class="form-group">
-                <label for="passwordConfirm" >Confirm Password:</label>
-                <input type="password" class="form-control" id="passwordConfirm" placeholder="retype password">
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+               
+                <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                          <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                          <button id="userInput" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                      </nav>
             </div>
-            <button type="submit" id="submitAccount" class="btn btn-primary">Submit</button>
-        </form>
-    <div>your id:<span id="usSD"></span></div>
-    <button id="TEST">TEST</button>
-    <button id="signOut">Sign out</button>
-    <button id="TESTAJAX">Test AJAx</button>
-    <p id="testNews"></p>
-    <p id="testComic"></p>
+
 </body>
-<script src="assets/accountSystem.js"></script>
 <script src="assets/default.js"></script>
+<script src="assets/accountSystem.js"></script>
+
 </html>
