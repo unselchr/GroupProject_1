@@ -39,16 +39,7 @@ function buildCard(data) {
 //Create variable for the user input 
 
 
-var userResults = "";
 
-// function buildQueryURL() {
-
-
-//     userResults.q = $("#userInput").val(); trim();
-
-//     console.log("success");
-// }
-//Click Handler
 
 // CORS Anyhwere Heroku App in order to prevent CORS Error 
 $( document ).ready(function() {
@@ -75,6 +66,8 @@ $("#TESTAJAX").on("click", function (event) {
 
 //Calling AJAX function for Comic Vine API
 function getResultsFromComicVine(userResults) {
+    // $("#userInput").on("click", function(){
+    // var userResults = $("searchInput").val();
     //console.log("got here");
     const url = "https://comicvine.gamespot.com/api/issues/?api_key=6b43a9a648dfcf60ff15f2f286abfb65049a1286&format=jsonp";
     $.ajax({
@@ -88,13 +81,16 @@ function getResultsFromComicVine(userResults) {
         }
     }).then(function (response) {
         console.log(response);
-        $("#testComic").text(JSON.stringify(response));
+        $("#articleDisplay").text(JSON.stringify(response));
     });
+// });
 };
 
 
 //Calling AJAX function for News API
 function getResultsFromNews(userResults) {
+    // $("#userInput").on("click", function(){
+    // var userResults = $("searchInput").val();
     const url = "https://newsapi.org/v2/everything?q=" + userResults + "&apiKey=5740346b2b8a403f9d7e1be866e8b27c"
     console.log(url);
     $.ajax({
@@ -107,8 +103,11 @@ function getResultsFromNews(userResults) {
         }
     }).then(function (response) {
         console.log(response);
-        $("#testNews").text(JSON.stringify(response));
+        $("#articleDisplay").text(JSON.stringify(response));
     });
+
+// });
+
 };
 
 });
