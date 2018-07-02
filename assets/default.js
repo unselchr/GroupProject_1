@@ -3,9 +3,13 @@
 
 function buildDeck(data) {
     var deck = $("<div class='card-deck'></div>");
-    for (var i = 0; i < data.length; i++) {
-        deck.append(buildCard(data[i]));
-    }
+    // for (var i = 0; i < data.length; i++) {
+    //     deck.append(buildCard(data[i]));
+    // }
+    data.forEach(function(cardData){
+        deck.append(buildCard(cardData));
+        //console.log(cardData);
+    })
     return (deck);
 }
 
@@ -15,22 +19,24 @@ function buildCard(data) {
     var title = $("<h5 class='card-title'></h5>");
     var article = $("<p class='card-text'></p>");
     var linkTo = $("<a class='card-link'>View Source</a>")
-    if (data === news) {
-        title.text();
-        article.text();
-        linkTo.attr("href", );
-        linkTo.attr("tartet", "_blank");
+    if (true) {
+        title.text(data.title);
+        article.text(data.article);
+        linkTo.attr("href", data.link);
+        linkTo.attr("target", "_blank");
     }
     else {
-        title.text();
-        article.text();
-        linkTo.attr("href", );
-        linkTo.attr("tartet", "_blank");
+        title.text(data.title);
+        article.text(data.article);
+        linkTo.attr("href", data.link);
+        linkTo.attr("target", "_blank");
     }
     body.append(title);
     body.append(article);
     body.append(linkTo);
+    body.append($("<button class='saveArticle'>Save</button>"));
     card.append(body);
+    console.log(card);
     return (card);
 }
 

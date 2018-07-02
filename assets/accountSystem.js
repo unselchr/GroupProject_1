@@ -122,3 +122,43 @@ firebase.auth().onAuthStateChanged(function (user) {
     $(".visibleSignedOut").css("display", "list-item");
   }
 });
+//all code below handles user storage system!
+function storeArticle(url){
+  var user=firebase.auth().currentUser;
+  if(user!=null){
+    var uid=user.uid;
+    firebase.database().ref(uid).push({
+      article: url
+    })
+  }
+  else{
+    console.log("tried to save an article while not logged in. call an exterminator");
+  }
+}
+
+$("#myArticles").on("click",function(event){
+  event.preventDefault();
+  user=firebase.auth().currentUser;
+  if(user!=null){
+    var uid=user.uid;
+    firebase.database().ref(uid).once("value").then(function(snapshot){
+      //test code
+      var articleData=[];
+      //console.log(snapshot.val());
+      //console.log("====================");
+      snapshot.forEach(function(childSnapshot){
+        //console.log(childSnapshot.val());//replace this with something that builds data for for card building function!
+        var singleArticle={title: childSnapshot.val().title,article: childSnapshot.val().description,link: childSnapshot.val().link};
+        //console.log(singleArticle);
+        articleData.push(singleArticle);
+      })
+      //here call build deck!
+      //console.log(articleData);
+      $("#articleDisplay").append(buildDeck(articleData));
+      //end test code
+    })
+  }
+  else{
+    console.log("tried to read saved articles while not logged in. call an exterminator");
+  }
+})
