@@ -38,6 +38,9 @@ function buildCard(data) {
     card.append(body);
     console.log(card);
     return (card);
+    $( ".card-body" ).css({
+        backgroundColor: "red" 
+    });
 }
 
 //In progress
