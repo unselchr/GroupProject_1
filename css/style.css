@@ -8,12 +8,13 @@ body{
 
 .navbar-brand{
     font-family: 'Faster One', cursive;
-    font-size: 40px; 
+    font-size: 50px; 
 
 }
 .navbar{
     background-color: red !important;
-    font-family: 'Shojumaru', cursive;
+    font-family: 'Freckle Face', cursive;
+     font-size: 25px;
 
 
 }
@@ -24,6 +25,7 @@ body{
 .jumbotron{
     color: red !important;
     font-weight: 100;
+    font-size: 25px;
     font-family: 'Bungee Inline', cursive;
     margin-top: 20px;
    
@@ -35,11 +37,12 @@ body{
 .card-header{
     background-color:  red !important;
     color:white;
-    font-family: 'Shojumaru', cursive;
-
+    font-family: 'Freckle Face', cursive;
+    font-size: 25px;
 }
 
 #myArticles{
-    font-family: 'Shojumaru', cursive;
+    font-family: 'Freckle Face', cursive;
+    font-size: 20px;
 
 }
