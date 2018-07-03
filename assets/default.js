@@ -3,12 +3,8 @@
 
 function buildDeck(data) {
     var deck = $("<div class='card-deck'></div>");
-    // for (var i = 0; i < data.length; i++) {
-    //     deck.append(buildCard(data[i]));
-    // }
     data.forEach(function(cardData){
         deck.append(buildCard(cardData));
-        //console.log(cardData);
     })
     return (deck);
 }
@@ -40,9 +36,7 @@ function buildCard(data) {
     return (card);
 }
 
-//In progress
 
-//Create variable for the user input 
 
 
 
@@ -61,12 +55,10 @@ $( document ).ready(function() {
 
 //Testing the AJAX to ensure the API's are working 
 $("#TESTAJAX").on("click", function (event) {
-    //console.log("got here");
     event.preventDefault();
     var data = [];
     getResultsFromComicVine("superman");
     getResultsFromNews("superman");
-    //console.log("Success");
 });
 
 
@@ -89,7 +81,6 @@ function getResultsFromComicVine(userResults) {
         console.log(response);
         $("#articleDisplay").text(JSON.stringify(response));
     });
-// });
 };
 
 
@@ -102,8 +93,6 @@ function getResultsFromNews(userResults) {
     $.ajax({
         url: url,
         type: "GET",
-        // dataType: "jsonp",
-        // jsonp: "json_callback",
         success: function (data) {
            console.log(data);
         }
@@ -112,7 +101,6 @@ function getResultsFromNews(userResults) {
         $("#articleDisplay").text(JSON.stringify(response));
     });
 
-// });
 
 };
 
