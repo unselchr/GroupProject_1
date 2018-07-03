@@ -17,7 +17,7 @@
 
         <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
                
-                        <a class="navbar-brand" href="#">Navbar</a>
+                        <a class="navbar-brand" href="#">Comic Bot</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -40,7 +40,7 @@
                               </div>
                              
                             </li>
-                            <button id="signOut" class="btn btn-primary visibleSignedIn nav-item">Sign Out</button>
+                            <button id="signOut" class="btn btn-primary visibleSignedIn nav-item  btn btn-outline-dark ">Sign Out</button>
                           </ul>
                          
                         </div>
@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8" >
-                    <div class="jumbotron">
+                    <div class="jumbotron text-warning">
                             <h1 class="display-4">Featured Article</h1>
                             <div id="featuredArticle">
 
@@ -66,8 +66,8 @@
                       User Info
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item "><button id="myArticles" class="btn btn-primary">My Articles</button></li>
-                      <li class="list-group-item">Number Of Saved Articles: <span id="numberOfArticles">0</span></li>
+                      <li class="list-group-item "><button id="myArticles" class="btn btn-primary btn btn-outline-danger">My Articles</button></li>
+                      <li class="list-group-item text-danger" style="  font-family: 'Freckle Face', cursive;font-size: 23px; ">Number Of Saved Articles: <span id="numberOfArticles">0</span></li>
                       
                     </ul>
                   </div>
@@ -79,22 +79,34 @@
                
                 <nav class="navbar navbar-light bg-light">
                         <form class="form-inline">
-                          <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button id="userInput" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                          <button id="TESTAJAX">Test AJAx</button>
-                          <p id="testNews"></p>
-                          <p id="testComic"></p>
+                          <input id="searchInput" style=" font-size: 20px;" class="form-control mr-sm-2" type="search" placeholder="Search Comic" aria-label="Search">
+                          <button id="userInput" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                         </form>
                       </nav>
             </div>
-          <div class="row">
-            <div class="col-lg-12" id="articleDisplay">
-
-            </div>
-          </div>
-
+        </div>
+        <div class="row">
+            <div class="col-lg-12 " id="articleDisplay"></div>
+        
+        
+        </div>
+   
+   
+    </div>
 </body>
 <script src="assets/default.js"></script>
 <script src="assets/accountSystem.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script>
+    //make calls to front end functions in default.js here
+</script>
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Freckle+Face" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+
+<!-- stylesheet -->
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+
 
 </html>
