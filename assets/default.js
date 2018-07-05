@@ -59,10 +59,9 @@ $(document).ready(function () {
         $("#articleDisplay").empty();
         event1.preventDefault();
         var searchParameters = $("#searchInput").val();
-        var articleData;
-        var newsResults;
+
         getResultsFromNews(searchParameters);
-        var cvResults;
+        
         getResultsFromComicVine(searchParameters);
         //setTimeout(function(){delayedSearch(newsResults,cvResults)},3000);
         
@@ -82,7 +81,7 @@ $(document).ready(function () {
 
     //Calling AJAX function for Comic Vine API
     function getResultsFromComicVine(userResults) {
-        const url = "https://comicvine.gamespot.com/api/issues/?api_key=6b43a9a648dfcf60ff15f2f286abfb65049a1286&format=jsonp";
+        const url = "https://comicvine.gamespot.com/api/search/?query="+userResults+"&api_key=6b43a9a648dfcf60ff15f2f286abfb65049a1286&format=json";
         $.ajax({
 
             url: url,
@@ -92,7 +91,14 @@ $(document).ready(function () {
             // success: function (data) {
             // }
         }).then(function (response) {
-            
+            console.log(response);
+            var articleData=[];
+            response.results.forEach(function(article){
+                var temp={title: article.aliases,description: article.description,link: article.site_detail_url, pic: article.image.screen_url};
+                articleData.push(temp);
+                console.log(article.image);
+            })
+            $("#articleDisplay").append(buildDeck(articleData));
         });
     };
 
@@ -110,7 +116,7 @@ $(document).ready(function () {
             //     console.log(data);
             // }
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
             var articleData=[];
             response.articles.forEach(function(article){
                 var temp={title: article.title,article: article.description, link: article.url, pic: article.urlToImage};

@@ -125,18 +125,6 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 //all code below handles user storage system!
-function storeArticle(url) {
-  var user = firebase.auth().currentUser;
-  if (user != null) {
-    var uid = user.uid;
-    firebase.database().ref(uid).push({
-      article: url
-    })
-  }
-  else {
-    console.log("tried to save an article while not logged in. call an exterminator");
-  }
-}
 
 $("#myArticles").on("click", function (event) {
   event.preventDefault();
