@@ -3,12 +3,8 @@
 
 function buildDeck(data) {
     var deck = $("<div class='card-deck'></div>");
-    // for (var i = 0; i < data.length; i++) {
-    //     deck.append(buildCard(data[i]));
-    // }
-    data.forEach(function(cardData){
+    data.forEach(function (cardData) {
         deck.append(buildCard(cardData));
-        //console.log(cardData);
     })
     return (deck);
 }
@@ -36,84 +32,91 @@ function buildCard(data) {
     body.append(linkTo);
     body.append($("<button class='saveArticle'>Save</button>"));
     card.append(body);
-    console.log(card);
+    //console.log(card);
     return (card);
 }
 
-//In progress
 
-//Create variable for the user input 
 
 
 
 
 // CORS Anyhwere Heroku App in order to prevent CORS Error 
-$( document ).ready(function() {
+$(document).ready(function () {
 
     //Testing Document Ready Function
-    console.log( "ready!" );
+    console.log("ready!");
 
-    jQuery.ajaxPrefilter(function(options) {
+    jQuery.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
         }
-    }); 
+    });
 
-//Testing the AJAX to ensure the API's are working 
-$("#TESTAJAX").on("click", function (event) {
-    //console.log("got here");
-    event.preventDefault();
-    var data = [];
-    getResultsFromComicVine("superman");
-    getResultsFromNews("superman");
-    //console.log("Success");
-});
-
-
-//Calling AJAX function for Comic Vine API
-function getResultsFromComicVine(userResults) {
-    // $("#userInput").on("click", function(){
-    // var userResults = $("searchInput").val();
-    //console.log("got here");
-    const url = "https://comicvine.gamespot.com/api/issues/?api_key=6b43a9a648dfcf60ff15f2f286abfb65049a1286&format=jsonp";
-    $.ajax({
+    $("#userInput").on("click", function (event1) {
+        event1.preventDefault();
+        var searchParameters = $("#searchInput").val();
+        var articleData;
+        var newsResults;
+        getResultsFromNews(searchParameters);
+        var cvResults;
+        getResultsFromComicVine(searchParameters);
+        //setTimeout(function(){delayedSearch(newsResults,cvResults)},3000);
         
-        url: url,
-        type: "GET",
-        dataType: "jsonp",
-        jsonp: "json_callback",
-        success: function (data) {
-           console.log(data);
-        }
-    }).then(function (response) {
-        console.log(response);
-        $("#articleDisplay").text(JSON.stringify(response));
-    });
-// });
-};
+    })
+    function delayedSearch(newsResults,cvResults){
+        // cvResults.forEach(function(article){
+        //  var temp={title: article.title,article: article.description, link: article.url};
+        //  articleData.push(temp);
+        // });
+        //console.log(newsResults);
+        newsResults.forEach(function(article){
+            var temp={title: article.title,article: article.description, link: article.url};
+            articleData.push(temp);
+        });
+        $("#articleDisplay").append(buildDeck(articleData));
+    }
+
+    //Calling AJAX function for Comic Vine API
+    function getResultsFromComicVine(userResults) {
+        const url = "https://comicvine.gamespot.com/api/issues/?api_key=6b43a9a648dfcf60ff15f2f286abfb65049a1286&format=jsonp";
+        $.ajax({
+
+            url: url,
+            type: "GET",
+            // dataType: "jsonp",
+            // jsonp: "json_callback",
+            // success: function (data) {
+            // }
+        }).then(function (response) {
+            
+        });
+    };
 
 
-//Calling AJAX function for News API
-function getResultsFromNews(userResults) {
-    // $("#userInput").on("click", function(){
-    // var userResults = $("searchInput").val();
-    const url = "https://newsapi.org/v2/everything?q=" + userResults + "&apiKey=5740346b2b8a403f9d7e1be866e8b27c"
-    console.log(url);
-    $.ajax({
-        url: url,
-        type: "GET",
-        // dataType: "jsonp",
-        // jsonp: "json_callback",
-        success: function (data) {
-           console.log(data);
-        }
-    }).then(function (response) {
-        console.log(response);
-        $("#articleDisplay").text(JSON.stringify(response));
-    });
+    //Calling AJAX function for News API
+    function getResultsFromNews(userResults) {
+        // $("#userInput").on("click", function(){
+        // var userResults = $("searchInput").val();
+        const url = "https://newsapi.org/v2/everything?q=" + userResults + "&pageSize=2&apiKey=5740346b2b8a403f9d7e1be866e8b27c"
+        //console.log(url);
+        $.ajax({
+            url: url,
+            type: "GET",
+            // success: function (data) {
+            //     console.log(data);
+            // }
+        }).then(function (response) {
+            console.log(response);
+            var articleData=[];
+            response.articles.forEach(function(article){
+                var temp={title: article.title,article: article.description, link: article.url};
+                articleData.push(temp);
+            });
+            $("#articleDisplay").append(buildDeck(articleData));
+        });
 
-// });
 
-};
+    };
 
 });
