@@ -37,9 +37,6 @@ var uiConfig = {
       return true;
     },
     uiShown: function () {
-      // The widget is rendered.
-      // Hide the loader.
-      //document.getElementById('loader').style.display = 'none';//!!!!!!!!!!!!!!!!!!!!!!!
     }
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -101,7 +98,6 @@ $("#TEST").on("click", function () {
 })
 $("#signOut").on("click", function () {
   firebase.auth().signOut().then(function () {
-    //alert("signed out");
     // Sign-out successful.
   }).catch(function (error) {
     // An error happened.
@@ -147,9 +143,6 @@ $("#myArticles").on("click", function (event) {
 })
 $("body").on("click",".saveArticle",function(event){
   event.preventDefault();
-  // console.log(this.parentElement.dataset.title);
-  // console.log(this.parentElement.dataset.description);
-  // console.log(this.parentElement.dataset.link);
   var user=firebase.auth().currentUser;
   if (user != null) {
     var uid = user.uid;
