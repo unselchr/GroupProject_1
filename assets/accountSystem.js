@@ -37,9 +37,6 @@ var uiConfig = {
       return true;
     },
     uiShown: function () {
-      // The widget is rendered.
-      // Hide the loader.
-      //document.getElementById('loader').style.display = 'none';//!!!!!!!!!!!!!!!!!!!!!!!
     }
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -101,7 +98,6 @@ $("#TEST").on("click", function () {
 })
 $("#signOut").on("click", function () {
   firebase.auth().signOut().then(function () {
-    //alert("signed out");
     // Sign-out successful.
   }).catch(function (error) {
     // An error happened.
@@ -125,28 +121,17 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 //all code below handles user storage system!
-function storeArticle(url) {
-  var user = firebase.auth().currentUser;
-  if (user != null) {
-    var uid = user.uid;
-    firebase.database().ref(uid).push({
-      article: url
-    })
-  }
-  else {
-    console.log("tried to save an article while not logged in. call an exterminator");
-  }
-}
 
 $("#myArticles").on("click", function (event) {
   event.preventDefault();
+  $("#articleDisplay").empty();
   user = firebase.auth().currentUser;
   if (user != null) {
     var uid = user.uid;
     firebase.database().ref(uid).once("value").then(function (snapshot) {
       var articleData = [];
       snapshot.forEach(function (childSnapshot) {
-        var singleArticle = { title: childSnapshot.val().title, article: childSnapshot.val().description, link: childSnapshot.val().link };
+        var singleArticle = { title: childSnapshot.val().title, article: childSnapshot.val().description, link: childSnapshot.val().link, pic: childSnapshot.val().pic };
         articleData.push(singleArticle);
       })
       $("#articleDisplay").append(buildDeck(articleData));
@@ -154,5 +139,22 @@ $("#myArticles").on("click", function (event) {
   }
   else {
     console.log("tried to read saved articles while not logged in. call an exterminator");
+  }
+})
+$("body").on("click",".saveArticle",function(event){
+  event.preventDefault();
+  var user=firebase.auth().currentUser;
+  if (user != null) {
+    var uid = user.uid;
+    firebase.database().ref(uid).push({
+      title: this.parentElement.dataset.title,
+      description: this.parentElement.dataset.description,
+      link: this.parentElement.dataset.link,
+      pic: this.parentElement.dataset.pic
+    })
+    $(this).hide();
+  }
+  else {
+    console.log("tried to save an article while not logged in. call an exterminator");
   }
 })
