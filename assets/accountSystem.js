@@ -159,6 +159,7 @@ $("body").on("click",".saveArticle",function(event){
       link: this.parentElement.dataset.link,
       pic: this.parentElement.dataset.pic
     })
+    $(this).hide();
   }
   else {
     console.log("tried to save an article while not logged in. call an exterminator");

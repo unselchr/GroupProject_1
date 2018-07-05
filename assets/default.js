@@ -16,8 +16,11 @@ function buildCard(data) {
     var article = $("<p class='card-text articleDescription'></p>");
     var linkTo = $("<a class='card-link articleLink'>View Source</a>");
     var previewPic=$("<img class='card-img-top' alt='preview picture'>");
+    if(data.title==""||data.title==null){
+        data.title="No Title";
+    }
     title.text(data.title);
-    if(data.article==""){
+    if(data.article==""||data.article==null){
         data.article="No description availible";
     }
     article.text(data.article);
@@ -32,7 +35,7 @@ function buildCard(data) {
     body.append(title);
     body.append(article);
     body.append(linkTo);
-    body.append($("<button class='saveArticle'>Save</button>"));
+    body.append($("<button class='saveArticle showLoggedIn'>Save</button>"));
     card.append(body);
     //console.log(card);
     return (card);
@@ -94,9 +97,9 @@ $(document).ready(function () {
             console.log(response);
             var articleData=[];
             response.results.forEach(function(article){
-                var temp={title: article.aliases,description: article.description,link: article.site_detail_url, pic: article.image.screen_url};
+                var temp={title: article.aliases,article: article.deck,link: article.site_detail_url, pic: article.image.screen_url};
                 articleData.push(temp);
-                console.log(article.image);
+                //console.log(article.image);
             })
             $("#articleDisplay").append(buildDeck(articleData));
         });
