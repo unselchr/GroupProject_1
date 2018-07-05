@@ -39,7 +39,8 @@ function buildCard(data) {
 }
 // CORS Anyhwere Heroku App in order to prevent CORS Error 
 $(document).ready(function () {
-
+    var featured={title: "DC's Green Lantern Corps Series Has Some Real 'Daddy Issues'", article: "Writer of Hal Jordan And The Green Lantern Corps, Robert Venditti, discusses Guy Gardner's choice to abandon the team to become a Darkstar.", pic: "https://static.comicvine.com/uploads/screen_kubrick/0/6063/6469308-gldek.jpg",link: "https://comicvine.gamespot.com/articles/dcs-green-lantern-corps-series-has-some-real-daddy/1100-156487/"};
+    $("#featuredArticle").append(buildCard(featured));
     //Testing Document Ready Function
     jQuery.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
