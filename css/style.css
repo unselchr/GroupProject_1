@@ -54,3 +54,23 @@ body{
     font-size: 20px;
 
 }
+
+.card{
+    font-family: 'Freckle Face', cursive;
+    background-color: red;
+    color: white;
+}
+
+.articleLink{
+    color:yellow;
+    margin-right: 10px;
+}
+
+.articleDescription{
+    font-size: 20px;
+}
+
+.articleTitle{
+    font-size: 30px;
+    font-weight: bold;
+}

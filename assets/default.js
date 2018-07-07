@@ -36,6 +36,9 @@ function buildCard(data) {
     body.append($("<button class='saveArticle showLoggedIn'>Save</button>"));
     card.append(body);
     return (card);
+    $( ".card-body" ).css({
+        backgroundColor: "red" 
+    });
 }
 // CORS Anyhwere Heroku App in order to prevent CORS Error 
 $(document).ready(function () {
