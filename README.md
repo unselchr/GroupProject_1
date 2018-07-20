@@ -1,2 +1,5 @@
 # GroupProject_1
-UnsellSpearsBurgos
+### A collaboration between:
+- Unsell
+- Spears
+- Burgos
